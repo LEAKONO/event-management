@@ -1,23 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EventList from "./components/EventList";
-import EventDetails from "./components/EventDetails";
-import Signup from "./components/Signup";
-import "./App.css";
-
+import EventDetails from "./components/EventDetails";  // Make sure this component is imported
 
 const App = () => {
   return (
     <Router>
       <div>
-        <nav>
-          <h1>Event Management System</h1>
-          <Link to="/">Home</Link>
-        </nav>
+        <h1>Event Management System</h1>
         <Routes>
           <Route path="/" element={<EventList />} />
-          <Route path="/events/:id" element={<EventDetails />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/events/:id" element={<EventDetails />} />  {/* This route should render EventDetails */}
         </Routes>
       </div>
     </Router>
