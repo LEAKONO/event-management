@@ -5,6 +5,7 @@ const EventList = () => {
   const [events, setEvents] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [loading, setLoading] = useState(true); // New loading state
 
   useEffect(() => {
     fetch("http://localhost:5000/events")
@@ -13,6 +14,7 @@ const EventList = () => {
         setEvents(data);
         const uniqueCategories = [...new Set(data.map((event) => event.category))];
         setCategories(uniqueCategories);
+        setLoading(false); // Set loading to false when data is fetched
       });
   }, []);
 
@@ -20,8 +22,12 @@ const EventList = () => {
     ? events.filter((event) => event.category === selectedCategory)
     : events;
 
+  if (loading) {
+    return <div>Loading events...</div>; // Display loading message until data is fetched
+  }
+
   return (
-    <div className="event-list-container">
+    <div>
       <h2>Available Events</h2>
       <label>
         Filter by category:
