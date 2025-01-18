@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import EventList from "./components/EventList";
-import EventDetails from "./components/EventDetails";  // Make sure this component is imported
+import EventDetails from "./components/EventDetails";
+import "./App.css"
 
 const App = () => {
   return (
